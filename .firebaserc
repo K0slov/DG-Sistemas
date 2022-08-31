@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "dg-sistemas": {
+      "hosting": {
+        "DGSistemasInteligentes": [
+          "dg-sistemas"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "dg-sistemas"
+  }
+}
