@@ -1,30 +1,37 @@
 import { Component } from "@angular/core";
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import firebase from 'firebase/compat/app';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from "src/app/core/auth.service";
 
 @Component({
   selector: 'app-box-initial',
   templateUrl: './box-initial.html',
-
-  template: `
-    <div *ngIf="auth.user | async as user; else showLogin">
-      <h1>Hello {{ user.displayName }}!</h1>
-      <button (click)="logout()">Logout</button>
-    </div>
-    <ng-template #showLogin>
-      <p>Please login.</p>
-      <button (click)="login()">Login with Google</button>
-    </ng-template>
-  `,
 })
 
 export class BoxInitialComponent{
-  constructor(public auth: AngularFireAuth) {
+
+  loginForm!: FormGroup;
+  errorMessage: string = '';
+
+  constructor(
+    public authService: AuthService,
+    private router: Router,
+    private fb: FormBuilder
+  ) {
+    this.createForm();
   }
-  login() {
-    this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+
+  createForm() {
+    this.loginForm = this.fb.group({
+      email: ['', Validators.required ],
+      password: ['',Validators.required]
+    });
   }
-  logout() {
-    this.auth.signOut();
+  tryGoogleLogin(){
+    this.authService.doGoogleLogin()
+    .then(res => {
+      this.router.navigate(['/user']);
+    })
   }
+
 }
