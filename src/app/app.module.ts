@@ -1,10 +1,8 @@
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 import { BoxInitialComponent } from './components/box-initial/box-initial.component';
-import { BoxPrincipalComponent } from './components/box-principal/box-principal.component';
 import { RouterModule } from '@angular/router';
 
 import { AngularFireModule } from '@angular/fire/compat';
@@ -16,13 +14,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { rootRouterConfig } from './app.routes';
 import { AuthGuard } from './core/auth.guard';
 import { UserService } from './core/user.service';
-import { UserResolver } from './user/user.resolver';
+import { UserResolver } from './components/user/user.resolver';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    BoxPrincipalComponent,
     BoxInitialComponent,
   ],
   imports: [

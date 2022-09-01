@@ -4,6 +4,6 @@
 
 
 body{
-    @apply bg-brown-300 text-gray-800;
+    @apply bg-brown-200 text-gray-800;
     -webkit-font-smoothing: antialiased;
 }

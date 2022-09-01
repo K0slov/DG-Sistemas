@@ -6,6 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'hero-pattern': "url('/src/assets/bg-masthead.png')",
+      },
       colors: {
         brown: {
           200: '#69574A',

@@ -5,7 +5,14 @@ import firebase from 'firebase/compat/app';
 @Injectable()
 export class AuthService {
   doLogout() {
-    throw new Error('Method not implemented.');
+    return new Promise<any>((resolve, reject) => {
+      this.afAuth.signOut()
+      .then((res: any) => {
+        resolve(res);
+      }, (error: any) => {
+        reject(error);
+      });
+    })
   }
 
   constructor(
