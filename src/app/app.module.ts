@@ -1,6 +1,8 @@
+import { UserService } from './components/user/user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 
 import { BoxInitialComponent } from './components/box-initial/box-initial.component';
 import { RouterModule } from '@angular/router';
@@ -13,9 +15,8 @@ import { AuthService } from './core/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { rootRouterConfig } from './app.routes';
 import { AuthGuard } from './core/auth.guard';
-import { UserService } from './core/user.service';
 import { UserResolver } from './components/user/user.resolver';
-
+import { ApiService } from './core/api/api.service';
 
 @NgModule({
   declarations: [
@@ -30,8 +31,9 @@ import { UserResolver } from './components/user/user.resolver';
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(rootRouterConfig, { useHash: false }),
+    HttpClientModule
   ],
-  providers: [AuthService, AuthGuard, UserService, UserResolver],
+  providers: [AuthService, AuthGuard, UserService, UserResolver, ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
